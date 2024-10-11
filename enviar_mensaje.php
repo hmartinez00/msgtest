@@ -11,8 +11,7 @@ $TU_TOKEN_BOT=$telegram[0];
 $ID_DE_TU_CHAT=$telegram[1];
 $fecha_hora = date('Y-m-d H:i:s');
 $text = '[' . $fecha_hora . '] ' . 
-    'Hola desde laravel!'
-    ;
+    'Actualizacon ejecutada!';
 
 // Reemplaza 'TU_TOKEN_BOT' con tu token real
 $telegram = new BotApi($TU_TOKEN_BOT);

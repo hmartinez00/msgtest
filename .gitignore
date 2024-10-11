@@ -21,3 +21,4 @@ yarn-error.log
 /.zed
 setting.json
 updater_down.sh
+output.text
