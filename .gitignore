@@ -20,3 +20,4 @@ yarn-error.log
 /.vscode
 /.zed
 setting.json
+updater_down.sh
