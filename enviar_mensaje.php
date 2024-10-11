@@ -3,31 +3,35 @@ require_once 'vendor/autoload.php';
 
 use TelegramBot\Api\BotApi;
 
-$ruta_archivo = 'output.text';
-$contenido = file_get_contents($ruta_archivo);
-
+// Aca se carga el json
 $directory = 'setting.json';
 $directoryData = json_decode(file_get_contents($directory));
-$telegram = $directoryData->telegram;
 
-$TU_TOKEN_BOT=$telegram[0];
+// Aca se crean las variables de entorno
+$git =  $directoryData->git;
+$telegram = $directoryData->telegram;
+$git_url=$git[0];
+$token=$git[1];
+$TOKEN_BOT=$telegram[0];
 $ID_DE_TU_CHAT=$telegram[1];
+
+// Ejecusion del pull
+shell_exec('git remote remove origin');
+shell_exec('git remote add origin https://github.com/'.$git_url.'.git');
+$contenido = shell_exec('git pull https://'.$token.'@github.com/'.$git_url.'.git');
+
 $fecha_hora = date('Y-m-d H:i:s');
 $text = '[' . $fecha_hora . '] ' .
     'Actualizacion ejecutada!' . "\n\n" .
-    $contenido
-    ;
+    $contenido;
 
-// Reemplaza 'TU_TOKEN_BOT' con tu token real
-$telegram = new BotApi($TU_TOKEN_BOT);
+// Envio de notificacion via telegram
+// Aca se crea el objeto
+$telegram = new BotApi($TOKEN_BOT);
 
-// Envía un mensaje a tu chat
+// Aca se envia el mensaje
 $telegram->sendMessage(
     $ID_DE_TU_CHAT, // Reemplaza con el ID de tu chat
     $text,
 );
-
-$git_log = shell_exec('git log');
-
-echo $git_log;
 
