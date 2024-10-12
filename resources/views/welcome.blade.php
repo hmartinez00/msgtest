@@ -29,7 +29,7 @@
                         <div class="bg-blue-700 flex justify-center w-40 ml-10 mt-5 p-2 rounded-2xl space-x-5 
                         hover:bg-blue-800 text-slate-100 text-xl
                         ">
-                            <a href="{{ route('home') }}">Home</a>
+                            <a href="{{ route('home') }}">Dashboard</a>
                         </div>
                     </div>
                     
