@@ -1,5 +1,6 @@
 <?php
-require_once 'vendor/autoload.php';
+// require_once 'vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use TelegramBot\Api\BotApi;
 
